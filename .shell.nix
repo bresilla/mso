@@ -2,17 +2,9 @@ with import <nixpkgs> {}; rec {
   cppEnv = stdenv.mkDerivation {
       name = "cmake";
       buildInputs = let
-        opencv_GTK = opencv4.override (old : {
-          enableVtk = true;
-          enableGtk3 = true;
-          enableGStreamer = true;
-          enableFfmpeg = true;
-          enableIpp = true;
-          enableTesseract = true;
-        } );
+        a = 5;
       in [
           stdenv
-          autoreconfHook
           autoconf
           pkg-config
           clang-tools
@@ -28,11 +20,6 @@ with import <nixpkgs> {}; rec {
           valgrind
           kcov
           ncurses
-          libusb
-          vtk
-          libglvnd
-          opencv_GTK
-          librealsense
           armadillo
       ];
       shellHook =''

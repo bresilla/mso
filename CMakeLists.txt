@@ -111,12 +111,10 @@ message ("BUILD TYPE: ${CMAKE_BUILD_TYPE}\n")
 
 find_package(Curses REQUIRED)
 find_package(fmt CONFIG REQUIRED)
-find_package(OpenCV CONFIG REQUIRED)
-find_package(realsense2 REQUIRED )
+find_package(nlohmann_json CONFIG REQUIRED)
 find_package(Armadillo REQUIRED)
 
-set(EXTLIB ncurses fmt::fmt fmt::fmt-header-only ${OpenCV_LIBS} realsense2 armadillo)
-# set(EXTLIB ncurses fmt::fmt fmt::fmt-header-only ${OpenCV_LIBS} ${wxWidgets_LIBRARIES} realsense2)
+set(EXTLIB ncurses fmt::fmt fmt::fmt-header-only nlohmann_json nlohmann_json::nlohmann_json armadillo)
 foreach(EXT ${EXTLIB})
     message("external library ${EXT} added")
 endforeach()
@@ -148,7 +146,7 @@ function (add_source_lib NAME)
     endforeach()
 endfunction(add_source_lib)
 
-set(LIBRARIES cplate second)
+set(LIBRARIES mso)
 
 foreach(LIB ${LIBRARIES})
     add_source_lib(${LIB})
